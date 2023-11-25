@@ -1,0 +1,32 @@
+import { ReactNode } from "react";
+
+export type BoxProps = {
+  children: ReactNode;
+  as?: string;
+  $pos?: string;
+  $top?: string;
+  $bottom?: string;
+  $left?: string;
+  $right?: string;
+  display?: string;
+  flex?: string;
+  $flexWrap?: string;
+  direction?: string;
+  $align?: string;
+  $justify?: string;
+  $gap?: string;
+  $rowGap?: string;
+  $columnGap?: string;
+  width?: string;
+  $mH?: string;
+  height?: string;
+  $marginTop?: string;
+  $marginBottom?: string;
+  $padding?: string;
+  $bg?: string;
+  $border?: string;
+  $borderBottom?: string;
+  $borderRadius?: string;
+  filter?: string;
+  $zIndex?: string;
+};
