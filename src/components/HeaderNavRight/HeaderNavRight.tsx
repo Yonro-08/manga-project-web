@@ -1,16 +1,16 @@
 import { useTheme } from "styled-components";
-import { IoMdSettings } from "react-icons/io";
 
-import { Button, Flex, Link } from "components/Custom";
+import { Button, Flex, Link, Text } from "components/Custom";
 import HeaderList from "components/HeaderList/HeaderList";
 import SwitchTheme from "components/SwitchTheme/SwitchTheme";
+import { SettingIcon } from "icons";
 
 const HeaderNavRight = () => {
   const theme = useTheme();
 
   return (
-    <Flex $gap="16px">
-      <Flex as="nav" $width="max-content" $height="100%" $gap="0px">
+    <Flex $height="100%" $gap={16}>
+      <Flex as="nav" $height="100%" $gap={0}>
         <HeaderList>
           <li>
             <Link to="bookmark">Закладки</Link>
@@ -19,15 +19,18 @@ const HeaderNavRight = () => {
       </Flex>
       <SwitchTheme />
       <Button $fillHover={theme.colors.primary}>
-        <IoMdSettings fill={theme.colors.textSecondary} size={24} />
+        <SettingIcon
+          fill={theme.colors.textSecondary}
+          width="24px"
+          height="24px"
+        />
       </Button>
       <Button
-        $bg={theme.colors.primary}
-        $color={theme.colors.textOnPrimary}
+        $backgroundColor={theme.colors.primary}
         $padding="8px 16px"
         $borderRadius="24px"
       >
-        Войти
+        <Text $color={theme.colors.textOnPrimary}>Войти</Text>
       </Button>
     </Flex>
   );

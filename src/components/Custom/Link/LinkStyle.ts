@@ -4,20 +4,17 @@ import { Link } from "react-router-dom";
 import LinkProps from "./types";
 
 const LinkStyle = styled(Link)<LinkProps>`
-  max-width: ${({ $mW }) => $mW};
-  display: block;
+  display: inline-block;
   width: max-content;
   height: max-content;
+  margin-left: ${({ $marginLeft }) => $marginLeft && `${$marginLeft}px`};
   padding: ${({ $padding }) => $padding};
   color: inherit;
+  font-size: ${({ $size }) => $size};
+  line-height: ${({ $lineHeight }) => $lineHeight};
   text-decoration: none;
-  text-align: center;
-  background-color: ${({ $bg }) => $bg};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   border-radius: ${({ $borderRadius }) => $borderRadius};
-  svg {
-    width: ${({ $width }) => $width};
-    height: ${({ $height }) => $height};
-  }
 `;
 
 export default LinkStyle;

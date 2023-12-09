@@ -1,91 +1,13 @@
 import { Box } from "components/Custom";
 import Slider from "../Slider/Slider";
+import useFetchAllManga from "hooks/query/useFetchAllManga";
 
 const Recommendation = () => {
-  const data = [
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-  ];
+  const { data, isLoading } = useFetchAllManga();
 
   return (
-    <Box as="section" $marginBottom="16px">
-      <Slider data={data} />
+    <Box as="section" $width="100vw" $marginBottom={16} $padding="0px 5px">
+      {!isLoading && <Slider data={data} />}
     </Box>
   );
 };

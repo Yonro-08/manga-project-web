@@ -7,8 +7,8 @@ export type TitleProps = {
   $paddingLeft?: string;
   $marginBottom?: string;
   $weight?: string;
-  color?: string;
-  size?: string;
-  letterSpacing?: string;
+  $color?: string;
+  $fontSize?: string;
+  $letterSpacing?: string;
   $textTransform?: string;
 };

@@ -1,7 +1,7 @@
 import { useTheme } from "styled-components";
 
 import { Box, Container, Flex } from "components/Custom";
-import Logo from "components/Logo/Logo";
+import Logo from "components/Logo";
 import HeaderNavLeft from "components/HeaderNavLeft/HeaderNavLeft";
 import HeaderNavRight from "components/HeaderNavRight/HeaderNavRight";
 
@@ -11,22 +11,22 @@ const Header = () => {
   return (
     <Box
       as="header"
-      $pos="fixed"
+      $position="fixed"
       $top="0"
       $left="0"
       $right="0"
-      height="56px"
-      $bg={theme.colors.bgPaper}
+      $width="100vw"
+      $height="56px"
+      $background={theme.colors.bgPaper}
+      $zIndex={9}
     >
       <Container>
-        <Flex $justify="space-between" $gap="20px">
-          <Flex $width="max-content" $gap="16px">
+        <Flex $width="100%" $height="100%" $justify="space-between" $gap={20}>
+          <Flex $height="100%" $gap={16}>
             <Logo />
             <HeaderNavLeft />
           </Flex>
-          <Flex $width="max-content">
-            <HeaderNavRight />
-          </Flex>
+          <HeaderNavRight />
         </Flex>
       </Container>
     </Box>

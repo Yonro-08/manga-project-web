@@ -2,12 +2,14 @@ import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 
+import { AllMangaProps } from "types/manga";
+import MangaItem from "../MangaItem/MangaItem";
+
 import "swiper/css";
 import "swiper/css/free-mode";
-import MangaItem, { MangaItemProps } from "../MangaItem/MangaItem";
 
 interface SliderProps {
-  data: MangaItemProps[];
+  data: AllMangaProps[] | undefined;
 }
 
 const Slider: FC<SliderProps> = ({ data }) => {
@@ -20,10 +22,10 @@ const Slider: FC<SliderProps> = ({ data }) => {
       className="mySwiper"
     >
       {data &&
-        data.map((item, index) => {
+        data.map((manga, index) => {
           return (
             <SwiperSlide key={index} style={{ width: "max-content" }}>
-              <MangaItem item={item} />
+              <MangaItem manga={manga} />
             </SwiperSlide>
           );
         })}

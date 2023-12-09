@@ -1,10 +1,16 @@
+import { ReactNode } from "react";
+
 export type TextProps = {
-  children: string;
-  $marginBottom?: string;
-  $mW?: string;
+  children: ReactNode;
+  $height?: string;
+  $marginBottom?: number;
+  $padding?: string;
+  $color?: string;
+  $fontSize?: string;
   $weight?: string;
-  color?: string;
-  size?: string;
+  $lineHeight?: string | number;
   letterSpacing?: string;
-  $variant?: string;
+  $variant?: "fs16" | "fs12" | "mangaStats";
+  $hover?: boolean;
+  $textColumn?: number;
 };

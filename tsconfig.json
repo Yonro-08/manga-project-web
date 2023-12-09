@@ -25,7 +25,10 @@
       "types/*": ["types/*"],
       "features/*": ["features/*"],
       "store/*": ["store/*"],
-      "hooks/*": ["hooks/*"]
+      "hooks/*": ["hooks/*"],
+      "lib/*": ["lib/*"],
+      "icons/*": ["icons/*"],
+      "utils/*": ["utils/*"]
     }
   },
   "include": ["src"],

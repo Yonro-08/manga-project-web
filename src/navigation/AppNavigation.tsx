@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../components/Layout";
-import { Home } from "../pages";
+import { Chapter, Home, Manga } from "../pages";
+import { ChapterEnd } from "features/Chapter";
 
 export const AppNavigation = createBrowserRouter([
   {
@@ -12,6 +13,18 @@ export const AppNavigation = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "/manga/:endpoint",
+        element: <Manga />,
+      },
+      {
+        path: "/manga/:endpoint/end",
+        element: <ChapterEnd />,
+      },
     ],
+  },
+  {
+    path: "/manga/:endpoint/chapters",
+    element: <Chapter />,
   },
 ]);

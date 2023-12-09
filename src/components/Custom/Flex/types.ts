@@ -3,14 +3,20 @@ import { ReactNode } from "react";
 export type FlexProps = {
   children: ReactNode;
   as?: string;
-  $pos?: string;
-  $top?: string;
-  direction?: string;
-  $align?: string;
-  $justify?: string;
-  $gap?: string;
+
+  $flex?: number;
+  $flexWrap?: "wrap" | "nowrap" | "wrap-reverse";
+  $direction?: "row" | "column";
+  $align?: "center" | "flex-start" | "flex-end" | "baseline" | "stretch";
+  $justify?: "center" | "start" | "flex-end" | "space-between";
+  $gap?: number;
+  $rowGap?: number;
+  $columnGap?: number;
+
   $width?: string;
   $height?: string;
-  $marginBottom?: string;
+  $padding?: string;
+  $marginBottom?: number;
+  $marginLeft?: number;
   $borderRadius?: string;
 };

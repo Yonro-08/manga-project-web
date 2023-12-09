@@ -1,20 +1,24 @@
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-import GlobalStyle from "./GlobalStyle.ts";
-import { useAppSelector } from "hooks/redux.ts";
+import { useThemeZustand } from "hooks/zustand/useThemeZustand";
+import GlobalStyle from "./GlobalStyle";
 import { AppNavigation } from "./navigation/AppNavigation";
+import { darkTheme, lightTheme } from "./theme";
 
-import "./fonts.css";
+const queryClient = new QueryClient();
 
 const App = () => {
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useThemeZustand();
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <RouterProvider router={AppNavigation} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <RouterProvider router={AppNavigation} />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

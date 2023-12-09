@@ -11,6 +11,9 @@ export default defineConfig({
       features: "/src/features",
       store: "/src/store",
       hooks: "/src/hooks",
+      lib: "/src/lib",
+      icons: "/src/icons",
+      utils: "/src/utils",
     },
   },
 });

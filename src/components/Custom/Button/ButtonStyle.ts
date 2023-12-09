@@ -3,12 +3,15 @@ import styled from "styled-components";
 import { ButtonProps } from "./types";
 
 const ButtonStyle = styled.button<ButtonProps>`
-  width: max-content;
-  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${({ $width }) => $width};
+  height: ${({ $height }) => $height};
   padding: ${({ $padding }) => $padding};
-  color: ${({ $color }) => $color};
-  background-color: ${({ $bg }) => $bg || "transparent"};
-  border: ${({ border }) => border || "none"};
+  background-color: ${({ $backgroundColor }) =>
+    $backgroundColor || "transparent"};
+  border: ${({ $border }) => $border || "none"};
   border-radius: ${({ $borderRadius }) => $borderRadius};
   cursor: pointer;
 

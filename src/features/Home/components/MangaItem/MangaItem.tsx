@@ -1,36 +1,57 @@
-import { Flex, Image, Text, Title } from "components/Custom";
 import { useTheme } from "styled-components";
 
-export interface MangaItemProps {
-  src: string;
-  mangaType: string;
-  mangaRating: string;
-  mangaTitle: string;
-}
+import { Flex, Image, Link, Text } from "components/Custom";
+import { StarIcon } from "icons";
+import { AllMangaProps } from "types/manga";
 
-const MangaItem = ({ item }: { item: MangaItemProps }) => {
+const MangaItem = ({ manga }: { manga: AllMangaProps }) => {
+  const { endpoint, title, typeManga, url } = manga;
+
   const theme = useTheme();
 
   return (
-    <Flex direction="column" $width="156px" $height="auto" $gap="10px">
-      <Image src={item.src} $fit="contain" />
-      <Flex>
-        <Text $variant="fs12" color={theme.colors.textSecondary}>
-          {item.mangaType}
-        </Text>
-        <Text $variant="fs12" color={theme.colors.textSecondary}>
-          {item.mangaRating}
+    <Link to={`/manga/${endpoint}?p=about`}>
+      <Flex
+        $direction="column"
+        $align="flex-start"
+        $width="156px"
+        $height="auto"
+        $gap={10}
+      >
+        <Image
+          src={url}
+          $width="156px"
+          $objectFit="cover"
+          $borderRadius="5px"
+        />
+        <Flex $gap={8}>
+          <Text
+            $fontSize="12px"
+            $lineHeight={1.66}
+            $color={theme.colors.textSecondary}
+          >
+            {typeManga}
+          </Text>
+          <Flex $gap={2}>
+            <Text
+              $fontSize="12px"
+              $lineHeight={1.66}
+              $color={theme.colors.textSecondary}
+            >
+              9.8
+            </Text>
+            <StarIcon
+              width="12px"
+              height="12px"
+              fill={theme.colors.textSecondary}
+            />
+          </Flex>
+        </Flex>
+        <Text $textColumn={2} $marginBottom={4}>
+          {title.russianName}
         </Text>
       </Flex>
-      <Title
-        as="h4"
-        $textColumn={2}
-        $marginBottom="8px"
-        color={theme.colors.textPrimary}
-      >
-        {item.mangaTitle}
-      </Title>
-    </Flex>
+    </Link>
   );
 };
 

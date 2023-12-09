@@ -18,7 +18,7 @@ const SwitchThemeStyle = styled.div`
   }
   span {
     position: absolute;
-    top: 0;
+    top: 0.5px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -35,7 +35,7 @@ const SwitchThemeStyle = styled.div`
     content: "";
     height: 17px;
     width: 17px;
-    top: 1px;
+    top: 1.5px;
     right: 2px;
     background-color: gray;
     transition: 0.4s;

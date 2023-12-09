@@ -1,102 +1,32 @@
+import { useTheme } from "styled-components";
+
 import { Box, Button, Container, Flex, Text, Title } from "components/Custom";
 import Slider from "../Slider/Slider";
-import { useTheme } from "styled-components";
+import useFetchAllManga from "hooks/query/useFetchAllManga";
 
 const HotNew = () => {
   const theme = useTheme();
-  const data = [
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-    {
-      src: "assets/images/StarGeneral.jpg",
-      mangaType: "StarGeneral.jpg",
-      mangaRating: "8.7",
-      mangaTitle: "Регрессия Сильнейшего Мастера",
-    },
-  ];
+  const { data, isLoading } = useFetchAllManga();
 
   return (
-    <Box as="section" $padding="24px 0px 16px">
-      <Container>
-        <Flex $justify="space-between" $marginBottom="16px">
-          <Title as="h5">Горячие новинки</Title>
+    <Box as="section" $width="100vw" $padding="24px 0px 16px">
+      <Container $padding="0px 5px">
+        <Flex
+          $width="100%"
+          $justify="space-between"
+          $marginBottom={16}
+          $padding="0px 7px"
+        >
+          <Title as="h5" $color={theme.colors.textPrimary}>
+            Горячие новинки
+          </Title>
           <Button>
-            <Text $variant="fs16" color={theme.colors.primary}>
+            <Text $fontSize="16px" $color={theme.colors.primary}>
               Больше
             </Text>
           </Button>
         </Flex>
-        <Slider data={data} />
+        {!isLoading && <Slider data={data} />}
       </Container>
     </Box>
   );

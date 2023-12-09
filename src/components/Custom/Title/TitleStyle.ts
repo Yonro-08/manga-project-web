@@ -3,17 +3,20 @@ import styled, { css } from "styled-components";
 import { TitleProps } from "./types";
 
 const TitleStyle = styled.h3<TitleProps>`
+  display: inline-block !important;
   height: auto;
   padding-left: ${({ $paddingLeft }) => $paddingLeft};
   margin-bottom: ${({ $marginBottom }) => $marginBottom};
-  color: ${({ color }) => color || "#fafcfc"};
-  font-size: ${({ size }) => size || "16px"};
+  color: ${({ $color }) => $color || "#fafcfc"};
+  font-size: ${({ $fontSize }) => $fontSize || "16px"};
   font-weight: ${({ $weight }) => $weight || "700"};
-  letter-spacing: ${({ letterSpacing }) => letterSpacing || "0.8px"};
+  letter-spacing: ${({ $letterSpacing }) => $letterSpacing || "0.8px"};
   line-height: normal;
+  font-style: normal;
   text-transform: ${({ $textTransform }) => $textTransform};
 
   ${({ $textColumn }) => {
+    if (!$textColumn) return;
     return css`
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -44,7 +47,7 @@ const TitleStyle = styled.h3<TitleProps>`
         `;
       case "h5":
         return css`
-          font-size: clamp(16px, 1.5vw, 20px);
+          font-size: clamp(16px, 2.5vw, 20px);
           font-weight: 500;
           line-height: 1.334;
         `;

@@ -3,15 +3,21 @@ import styled from "styled-components";
 import { FlexProps } from "./types";
 
 export const FlexStyle = styled.div<FlexProps>`
-  position: ${({ $pos }) => $pos};
-  top: ${({ $top }) => $top};
   display: flex;
-  flex-direction: ${({ direction }) => direction || "row"};
+  flex: ${({ $flex }) => $flex};
+  flex-wrap: ${({ $flexWrap }) => $flexWrap};
+  flex-direction: ${({ $direction }) => $direction || "row"};
   align-items: ${({ $align }) => $align || "center"};
-  justify-content: ${({ $justify }) => $justify || "stretch"};
-  gap: ${({ $gap }) => $gap || "10px"};
-  width: ${({ $width }) => $width || "100%"};
-  height: ${({ $height }) => $height || "100%"};
-  margin-bottom: ${({ $marginBottom }) => $marginBottom};
+  justify-content: ${({ $justify }) => $justify || "center"};
+  gap: ${({ $gap }) => ($gap ? `${$gap}px` : "10px")};
+  column-gap: ${({ $columnGap }) => $columnGap && `${$columnGap}px`};
+  row-gap: ${({ $rowGap }) => $rowGap && `${$rowGap}px`};
+
+  width: ${({ $width }) => $width};
+  height: ${({ $height }) => $height};
+  padding: ${({ $padding }) => $padding};
+  margin-left: ${({ $marginLeft }) => $marginLeft && `${$marginLeft}px`};
+  margin-bottom: ${({ $marginBottom }) =>
+    $marginBottom && `${$marginBottom}px`};
   border-radius: ${({ $borderRadius }) => $borderRadius};
 `;
