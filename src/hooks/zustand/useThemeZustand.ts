@@ -8,7 +8,7 @@ interface useThemeProps {
 }
 
 export const useThemeZustand = create<useThemeProps>((set) => ({
-  theme: getLocalStorage("theme") || "darkTheme",
+  theme: getLocalStorage("theme") || "dark",
   switchTheme: (value) =>
     set(() => {
       setLocalStorage("theme", value);

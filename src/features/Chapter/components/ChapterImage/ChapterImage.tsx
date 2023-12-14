@@ -5,9 +5,11 @@ interface ChapterImageProps {
   src: string;
 }
 
-const ChapterImageStyle = styled.img.attrs<ChapterImageProps>(({ src }) => ({
-  src,
-}))`
+export const ChapterImageStyle = styled.img.attrs<ChapterImageProps>(
+  ({ src }) => ({
+    src,
+  })
+)`
   width: 100%;
 `;
 

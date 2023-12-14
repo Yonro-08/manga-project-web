@@ -51,7 +51,7 @@ const BurgerStyle = styled.div<Props>`
   }}
 `;
 
-const DropDown = ({ options }: { options: string[] }) => {
+const DropDown = ({ value, options }: { value: string; options: string[] }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [locationBox, setLocationBox] = useState<boolean>(false);
   const ref = useRef<any>(null);
@@ -84,8 +84,8 @@ const DropDown = ({ options }: { options: string[] }) => {
 
   return (
     <DropDownStyle ref={ref} onClick={handleLocationBox}>
-      <Text $weight="600" size="12px">
-        ДОБАВИТЬ В ЗАКЛАДКИ
+      <Text $weight="600" $fontSize="12px">
+        {value}
       </Text>
       <ArrowDown width="20px" height="20px" />
       <BurgerStyle
@@ -95,7 +95,7 @@ const DropDown = ({ options }: { options: string[] }) => {
         $right="-4px"
       >
         {options.map((option, index) => (
-          <Text key={index} $p="12px 16px">
+          <Text key={index} $padding="12px 16px">
             {option}
           </Text>
         ))}

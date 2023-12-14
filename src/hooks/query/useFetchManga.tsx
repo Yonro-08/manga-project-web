@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getMangaByEndpoint } from "lib/api/manga";
 
-const useFetchManga = (endpoint: string | undefined) => {
+const useFetchManga = (endpoint: string = "") => {
   return useQuery({
     queryKey: ["manga", endpoint],
     queryFn: () => {

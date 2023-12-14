@@ -11,6 +11,7 @@ const TextStyle = styled.p<TextProps>`
   font-size: ${({ $fontSize }) => $fontSize || "14px"};
   line-height: ${({ $lineHeight }) => $lineHeight || 1.2};
   font-weight: ${({ $weight }) => $weight || "400"};
+  background-color: ${({ $bg }) => $bg};
   overflow: hidden;
 
   ${({ $textColumn }) => {

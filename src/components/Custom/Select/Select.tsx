@@ -12,12 +12,14 @@ const SelectStyle = styled.select<SelectProps>`
   outline: none;
 
   option {
+    position: absolute;
+    top: 100%;
     background-color: ${({ theme }) => theme.colors.bgPaper};
   }
 `;
 
-const Select: FC<SelectProps> = (props) => {
-  return <SelectStyle {...props} />;
+const SelectCustom: FC<SelectProps> = (props) => {
+  return <div></div>;
 };
 
-export default Select;
+export default SelectCustom;

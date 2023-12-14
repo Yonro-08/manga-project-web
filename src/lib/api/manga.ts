@@ -1,14 +1,14 @@
 import axios from "lib/axios";
-import { AllMangaProps, MangaProps } from "types/manga";
+import { MangaShortProps, MangaProps } from "types/manga";
 
-export const getManga = async (): Promise<AllMangaProps[]> => {
-  const path = "/api/manga";
+export const getManga = async (): Promise<MangaShortProps[]> => {
+  const path = `/api/manga`;
   const result = await axios.get(path);
   return result.data;
 };
 
 export const getMangaByEndpoint = async (
-  endpoint: string | undefined
+  endpoint: string
 ): Promise<MangaProps> => {
   const path = `/api/manga/${endpoint}`;
   const result = await axios.get(path);

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const HeaderListStyle = styled.ul`
+import { HeaderListProps } from "./type";
+
+const HeaderListStyle = styled.ul<HeaderListProps>`
   display: flex;
   height: 100%;
   color: ${({ theme }) => theme.colors.textPrimary};
@@ -14,7 +16,7 @@ const HeaderListStyle = styled.ul`
     position: relative;
     height: 100%;
     font-size: 12px;
-    padding: 0px 12px;
+    padding: ${({ $padding }) => $padding || "0px 12px"};
     cursor: pointer;
   }
   li::before {

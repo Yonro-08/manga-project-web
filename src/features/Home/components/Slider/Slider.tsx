@@ -2,17 +2,18 @@ import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 
-import { AllMangaProps } from "types/manga";
+import { MangaShortProps } from "types/manga";
 import MangaItem from "../MangaItem/MangaItem";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 
 interface SliderProps {
-  data: AllMangaProps[] | undefined;
+  data: MangaShortProps[];
+  width?: string;
 }
 
-const Slider: FC<SliderProps> = ({ data }) => {
+const Slider: FC<SliderProps> = ({ data, width }) => {
   return (
     <Swiper
       slidesPerView={"auto"}
@@ -25,7 +26,7 @@ const Slider: FC<SliderProps> = ({ data }) => {
         data.map((manga, index) => {
           return (
             <SwiperSlide key={index} style={{ width: "max-content" }}>
-              <MangaItem manga={manga} />
+              <MangaItem manga={manga} width={width} />
             </SwiperSlide>
           );
         })}

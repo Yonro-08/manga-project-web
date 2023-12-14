@@ -1,4 +1,4 @@
-export interface AllMangaProps {
+export interface MangaShortProps {
   title: {
     otherName: string;
     russianName: string;
@@ -12,7 +12,7 @@ export interface AllMangaProps {
 
 export interface ChapterProps {
   _id: string;
-  chapterNum: string;
+  chapterNum: number;
   chapterImage: string[];
   views: string;
   createChapter: string;

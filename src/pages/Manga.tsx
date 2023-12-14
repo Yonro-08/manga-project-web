@@ -11,7 +11,7 @@ const Manga = () => {
   const { endpoint } = useParams();
   const { getManga } = useManga();
 
-  const { data, isLoading } = useFetchManga(endpoint);
+  const { data, isLoading } = useFetchManga(endpoint || "");
 
   useEffect(() => {
     getManga(data);
