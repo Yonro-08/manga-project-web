@@ -1,8 +1,9 @@
 import { ChangeEvent } from "react";
 
-import SwitchThemeStyle from "./SwitchThemeStyle";
 import { useThemeZustand } from "hooks/zustand/useThemeZustand";
 import { MoonIcon, SunIcon } from "icons";
+
+import c from "./SwitchTheme.module.scss";
 
 const SwitchTheme = () => {
   const { switchTheme, theme } = useThemeZustand();
@@ -16,7 +17,7 @@ const SwitchTheme = () => {
   };
 
   return (
-    <SwitchThemeStyle>
+    <div className={c.container}>
       <input
         type="checkbox"
         checked={theme === "light"}
@@ -26,7 +27,7 @@ const SwitchTheme = () => {
         <MoonIcon />
         <SunIcon />
       </span>
-    </SwitchThemeStyle>
+    </div>
   );
 };
 

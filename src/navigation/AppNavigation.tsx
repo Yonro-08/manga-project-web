@@ -1,30 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../components/Layout";
-import { Chapter, Home, Manga } from "../pages";
-import { ChapterEnd } from "features/Chapter";
+import { ChapterPage, CreateManga, HomePage, MangaPage } from "../pages";
 
 export const AppNavigation = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/manga/:endpoint",
-        element: <Manga />,
-      },
-      {
-        path: "/manga/:endpoint/end",
-        element: <ChapterEnd />,
-      },
-    ],
-  },
-  {
-    path: "/manga/:endpoint/chapters",
-    element: <Chapter />,
-  },
+	{
+		path: "/",
+		element: <Layout />,
+		children: [
+			{
+				path: "/",
+				element: <HomePage />,
+			},
+			{
+				path: "/manga/:endpoint",
+				element: <MangaPage />,
+			},
+			{
+				path: "/manga/create",
+				element: <CreateManga />,
+			},
+		],
+	},
+	{
+		path: "/manga/:endpoint/chapters",
+		element: <ChapterPage />,
+	},
 ]);

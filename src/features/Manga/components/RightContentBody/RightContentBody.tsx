@@ -1,12 +1,12 @@
-import { Flex, Link } from "components/Custom";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
-import MangaAbout from "../MangaAbout/MangaAbout";
-import MangaChapters from "../MangaChapters/MangaChapters";
-import MangaRoute from "../MangaRoute/MangaRoute";
-import MangaSimilar from "../MangaSimilar/MangaSimilar";
+import MangaAbout from "../MangaAbout";
+import MangaChapters from "../MangaChapters";
+import MangaSimilar from "../MangaSimilar";
 
 import { useManga } from "hooks/zustand/useManga";
+
+import c from "./RightContentBody.module.scss";
 
 const RightContentBody = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,33 +15,16 @@ const RightContentBody = () => {
   const { manga } = useManga();
 
   return (
-    <Flex $width="100%" $align="flex-start">
-      <Flex
-        $direction="column"
-        $align="flex-start"
-        $width="100%"
-        $padding="20px"
-      >
-        <MangaRoute $active={pQuery}>
-          <Link
-            to="?p=about"
-            $padding="8px 16px"
-            $borderRadius="8px"
-            $size="12px"
-            $lineHeight="1.5"
-          >
+    <div className={c.container}>
+      <div className={c.aboutContainer}>
+        <div className={c.route} data-active={pQuery}>
+          <Link className={c.link} to="?p=about">
             ОПИСАНИЕ
           </Link>
-          <Link
-            to="?p=chapters"
-            $padding="8px 16px"
-            $borderRadius="8px"
-            $size="12px"
-            $lineHeight="1.5"
-          >
-            ГЛАВЫ (397)
+          <Link className={c.link} to="?p=chapters">
+            ГЛАВЫ ({manga?.chapters.length})
           </Link>
-        </MangaRoute>
+        </div>
         {pQuery === "about" ? (
           <MangaAbout content={manga?.content} />
         ) : (
@@ -50,9 +33,9 @@ const RightContentBody = () => {
             endpoint={manga?.endpoint}
           />
         )}
-      </Flex>
+      </div>
       <MangaSimilar />
-    </Flex>
+    </div>
   );
 };
 

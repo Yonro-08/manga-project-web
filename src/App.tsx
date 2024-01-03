@@ -1,25 +1,33 @@
+import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import { useThemeZustand } from "hooks/zustand/useThemeZustand";
-import GlobalStyle from "./GlobalStyle";
 import { AppNavigation } from "./navigation/AppNavigation";
-import { darkTheme, lightTheme } from "./theme";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
+});
+
+import "@fontsource-variable/exo-2";
+import "./global.scss";
 
 const App = () => {
-  const { theme } = useThemeZustand();
+	const { theme } = useThemeZustand();
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
-        <GlobalStyle />
-        <RouterProvider router={AppNavigation} />
-      </ThemeProvider>
-    </QueryClientProvider>
-  );
+	useEffect(() => {
+		document.body.setAttribute("data-theme", "dark");
+	}, []);
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={AppNavigation} />
+		</QueryClientProvider>
+	);
 };
 
 export default App;

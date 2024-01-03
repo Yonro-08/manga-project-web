@@ -11,7 +11,8 @@ export const handleTransitionPagesNext = (
     page === chapter?.chapterImage.length &&
     chapterNum === manga?.chapters[manga?.chapters.length - 1].chapterNum
   ) {
-    return `/manga/${endpoint}/end`;
+    window.scrollTo(0, 0);
+    return `/manga/${endpoint}`;
   }
 
   if (page === chapter?.chapterImage.length) {

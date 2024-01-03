@@ -1,55 +1,34 @@
-import { useTheme } from "styled-components";
-
-import { Flex, Image, Text } from "components/Custom";
-import { StarIcon } from "icons";
-import { MangaShortProps } from "types/manga";
 import { Link } from "react-router-dom";
-import { MangaItemStyle } from "./MangaItemStyle";
+
+import { StarIcon } from "icons";
+import { MangaListProps } from "types/manga";
+
+import c from "./MangaItem.module.scss";
 
 const MangaItem = ({
-  manga,
-  width,
+	manga,
+	width,
 }: {
-  manga: MangaShortProps;
-  width?: string;
+	manga: MangaListProps;
+	width?: boolean;
 }) => {
-  const { endpoint, title, typeManga, url } = manga;
+	const { endpoint, title, typeManga, url } = manga;
 
-  const theme = useTheme();
-
-  return (
-    <Link to={`/manga/${endpoint}?p=about`}>
-      <MangaItemStyle $width={width}>
-        <Image src={url} $borderRadius="5px" />
-        <Flex $justify="start" $gap={8}>
-          <Text
-            $fontSize="12px"
-            $lineHeight={1.66}
-            $color={theme.colors.textSecondary}
-          >
-            {typeManga}
-          </Text>
-          <Flex $gap={2}>
-            <Text
-              $fontSize="12px"
-              $lineHeight={1.66}
-              $color={theme.colors.textSecondary}
-            >
-              9.8
-            </Text>
-            <StarIcon
-              width="12px"
-              height="12px"
-              fill={theme.colors.textSecondary}
-            />
-          </Flex>
-        </Flex>
-        <Text $textColumn={2} $marginBottom={4}>
-          {title.russianName}
-        </Text>
-      </MangaItemStyle>
-    </Link>
-  );
+	return (
+		<Link to={`/manga/${endpoint}?p=about`}>
+			<div className={c.container} data-width={width}>
+				<img className={c.image} src={url} alt="" />
+				<div className={c.bodyContainer}>
+					<p className={c.type}>{typeManga}</p>
+					<div className={c.rating}>
+						<p>9.8</p>
+						<StarIcon />
+					</div>
+				</div>
+				<p className={c.title}>{title.russianName}</p>
+			</div>
+		</Link>
+	);
 };
 
 export default MangaItem;

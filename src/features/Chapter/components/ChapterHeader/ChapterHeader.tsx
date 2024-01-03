@@ -1,54 +1,52 @@
-import { useTheme } from "styled-components";
-import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import Logo from "components/Logo";
+import HeaderNavRight from "components/HeaderNavRight";
+import DropDown from "../DropDown";
+import { ArrowLeft, ArrowRight } from "icons";
 import { useManga } from "hooks/zustand/useManga";
 
-import { Box, Container, Flex, Link, Text } from "components/Custom";
-import Logo from "components/Logo";
-import HeaderList from "components/HeaderList/HeaderList";
-import { ArrowLeft, ArrowRight } from "icons";
-import DropDown from "../DropDown/DropDown";
-import { ChapterHeaderStyle } from "./ChapterHeaderStyle";
+import c from "./ChapterHeader.module.scss";
 
 const ChapterHeader = () => {
-  const theme = useTheme();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const chapterQuery = searchParams.get("chapter");
   const { manga } = useManga();
 
-  // const sortFunction = (a: any, b: any) => {};
-
   return (
-    <ChapterHeaderStyle>
-      <Container>
-        <Flex $justify="space-between" $height="100%">
-          <Flex $height="100%">
+    <header className={c.header}>
+      <div className="container">
+        <div className={c.container}>
+          <div className={c.leftContent}>
             <Logo />
-            <HeaderList>
-              <li>
-                <Link to={`/manga/${manga?._id}`}>
-                  <Text $fontSize="12px" $color="#bebaac">
+            <nav>
+              <ul className="headerList">
+                <li>
+                  <Link
+                    className="chapterTitle"
+                    to={`/manga/${manga?.endpoint}`}
+                  >
                     {manga?.title?.russianName}
-                  </Text>
-                </Link>
-              </li>
-            </HeaderList>
-          </Flex>
-          <Flex $height="70%">
-            <HeaderList $padding="6px">
-              <li>
-                <ArrowLeft width="24px" height="24px" fill="#bebaac" />
-              </li>
-              {manga && <DropDown options={manga?.chapters} />}
-              <li>
-                <ArrowRight width="24px" height="24px" fill="#bebaac" />
-              </li>
-            </HeaderList>
-          </Flex>
-          <Box></Box>
-        </Flex>
-      </Container>
-    </ChapterHeaderStyle>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <ul className={`${c.headerList} headerList`}>
+            <li>
+              <a>
+                <ArrowLeft />
+              </a>
+            </li>
+            {manga && <DropDown options={manga?.chapters} />}
+            <li>
+              <a>
+                <ArrowRight />
+              </a>
+            </li>
+          </ul>
+          <HeaderNavRight />
+        </div>
+      </div>
+    </header>
   );
 };
 

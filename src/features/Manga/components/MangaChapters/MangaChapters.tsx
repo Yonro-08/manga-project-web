@@ -1,7 +1,8 @@
-import { Flex } from "components/Custom";
-import Chapter from "../Chapter/Chapter";
+import Chapter from "../Chapter";
 
 import { ChapterProps } from "types/manga";
+
+import c from "./MangaChapters.module.scss";
 
 const MangaChapters = ({
   chapters,
@@ -11,12 +12,12 @@ const MangaChapters = ({
   endpoint: string | undefined;
 }) => {
   return (
-    <Flex $direction="column" $width="100%" $padding="8px 16px" $gap={4}>
+    <div className={c.container}>
       {chapters &&
         chapters.map((chapter, index) => {
           return <Chapter key={index} chapter={chapter} endpoint={endpoint} />;
         })}
-    </Flex>
+    </div>
   );
 };
 

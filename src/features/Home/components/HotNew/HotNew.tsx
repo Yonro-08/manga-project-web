@@ -1,33 +1,22 @@
-import { useTheme } from "styled-components";
+import useFetchMangaList from "hooks/query/useFetchMangaList";
+import Slider from "../Slider";
 
-import { Button, Container, Flex, Text, Title } from "components/Custom";
-import Slider from "../Slider/Slider";
-import useFetchAllManga from "hooks/query/useFetchAllManga";
-import { HotNewContainerStyle, HotNewStyle } from "./HotNewStyle";
+import c from "./HotNew.module.scss";
 
 const HotNew = () => {
-  const theme = useTheme();
-  const { data, isLoading } = useFetchAllManga();
+	const { data, isLoading } = useFetchMangaList();
 
-  return (
-    <HotNewStyle>
-      <Container $padding="0px 5px">
-        <HotNewContainerStyle>
-          <Title as="h5" $color={theme.colors.textPrimary}>
-            Горячие новинки
-          </Title>
-          <Button>
-            <Text $fontSize="16px" $color={theme.colors.primary}>
-              Больше
-            </Text>
-          </Button>
-        </HotNewContainerStyle>
-        {!isLoading && data && (
-          <Slider data={data} width="clamp(80px, 24vw, 156px)" />
-        )}
-      </Container>
-    </HotNewStyle>
-  );
+	return (
+		<section className={c.hotNew}>
+			<div className="container">
+				<div className={c.container}>
+					<h3 className={c.title}>Горячие новинки</h3>
+					<button className={c.link}>Больше</button>
+				</div>
+				{!isLoading && data && <Slider data={data} width />}
+			</div>
+		</section>
+	);
 };
 
 export default HotNew;

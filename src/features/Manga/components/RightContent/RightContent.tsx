@@ -1,14 +1,14 @@
-import { Flex } from "components/Custom";
+import RightContentHeader from "../RightContentHeader";
+import RightContentBody from "../RightContentBody";
 
-import RightContentHeader from "../RightContentHeader/RightContentHeader";
-import RightContentBody from "../RightContentBody/RightContentBody";
+import c from "./RightContent.module.scss";
 
 const RightContent = () => {
   return (
-    <Flex $flex={1} $direction="column">
+    <div className={c.container}>
       <RightContentHeader />
       <RightContentBody />
-    </Flex>
+    </div>
   );
 };
 

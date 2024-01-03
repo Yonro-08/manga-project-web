@@ -1,18 +1,16 @@
-import { useTheme } from "styled-components";
+import { Link } from "react-router-dom";
 
-import { Link } from "components/Custom";
-import LogoStyle from "./LogoStyle";
 import { LogoIcon } from "icons";
 
-const Logo = () => {
-  const theme = useTheme();
+import c from "./Logo.module.scss";
 
+const Logo = () => {
   return (
-    <LogoStyle>
+    <div className={c.container}>
       <Link to={"/"}>
-        <LogoIcon fill={theme.colors.fillLogo} width="32px" height="32px" />
+        <LogoIcon />
       </Link>
-    </LogoStyle>
+    </div>
   );
 };
 

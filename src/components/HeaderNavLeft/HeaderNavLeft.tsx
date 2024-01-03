@@ -1,15 +1,13 @@
-import { useTheme } from "styled-components";
+import { Link } from "react-router-dom";
 
-import { Box, Flex, Link } from "components/Custom";
-import HeaderList from "components/HeaderList/HeaderList";
 import { SearchIcon } from "icons";
 
-const HeaderNavLeft = () => {
-  const theme = useTheme();
+import c from "./HeaderNavLeft.module.scss";
 
+const HeaderNavLeft = () => {
   return (
-    <Box as="nav" $height="100%">
-      <HeaderList>
+    <nav className={c.nav}>
+      <ul className="headerList">
         <li>
           <Link to="catalog">Каталог</Link>
         </li>
@@ -17,17 +15,12 @@ const HeaderNavLeft = () => {
           <Link to="tops">Топы</Link>
         </li>
         <li>
-          <Flex $align="center" $gap={6}>
-            <SearchIcon
-              width="16px"
-              height="16px"
-              fill={theme.colors.textPrimary}
-            />{" "}
-            Поиск
-          </Flex>
+          <div className={c.search}>
+            <SearchIcon /> Поиск
+          </div>
         </li>
-      </HeaderList>
-    </Box>
+      </ul>
+    </nav>
   );
 };
 

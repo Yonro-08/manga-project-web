@@ -1,5 +1,4 @@
-import { Flex, Image, Text } from "components/Custom";
-import { useTheme } from "styled-components";
+import c from "./MangaRec.module.scss";
 
 interface MangaRecProps {
   src: string;
@@ -8,19 +7,14 @@ interface MangaRecProps {
 }
 
 const MangaRec = ({ src, title, subtitle }: MangaRecProps) => {
-  const theme = useTheme();
   return (
-    <Flex $width="100%" $gap={12}>
-      <Image src={src} $width="60px" />
-      <Flex $direction="column" $align="flex-start" $gap={5}>
-        <Text $fontSize="16px" $weight="600" $textColumn={2}>
-          {title}
-        </Text>
-        <Text $color={theme.colors.textSecondary} $lineHeight={1.43}>
-          {subtitle}
-        </Text>
-      </Flex>
-    </Flex>
+    <div className={c.container}>
+      <img className={c.image} src={src} />
+      <div className={c.content}>
+        <p data-text-column={2}>{title}</p>
+        <p className={c.subtitle}>{subtitle}</p>
+      </div>
+    </div>
   );
 };
 

@@ -1,76 +1,74 @@
-import { useState } from "react";
-import { useTheme } from "styled-components";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
-import { Button, Flex, Link, Text } from "components/Custom";
 import { ArrowDown } from "icons";
 
+import c from "./MangaAbout.module.scss";
+
 interface MangaAboutProps {
-  content?: string;
-  genres?: string[];
+	content?: string;
+	genres?: string[];
 }
 
 const MangaAbout = (props: MangaAboutProps) => {
-  const Genres = [
-    "Экшен",
-    "Элементы юмора",
-    "Приключения",
-    "Романтика",
-    "Сверхъестественное",
-    "Фэнтези",
-  ];
-  const [isShow, setIsShow] = useState<boolean>(false);
-  const theme = useTheme();
+	const Genres = [
+		"Экшен",
+		"Элементы юмора",
+		"Приключения",
+		"Романтика",
+		"Сверхъестественное",
+		"Фэнтези",
+	];
+	const textRef = useRef<HTMLDivElement>(null);
+	const [showFullText, setShowFullText] = useState<boolean>(false);
 
-  return (
-    <Flex
-      $direction="column"
-      $width="100%"
-      $align="flex-start"
-      $flex={1}
-      $padding="8px 16px"
-    >
-      <Flex
-        $direction="column"
-        $align="flex-start"
-        $gap={8}
-        $width="100%"
-        $marginBottom={32}
-      >
-        <Text
-          $height={isShow ? "auto" : "100px"}
-          $fontSize="16px"
-          $lineHeight={1.6}
-        >
-          {props?.content}
-        </Text>
-        {!isShow && (
-          <Button onClick={() => setIsShow(true)}>
-            <ArrowDown
-              width="24px"
-              height="24px"
-              fill={theme.colors.textSecondary}
-            />
-            <Text $color={theme.colors.textSecondary}>Больше</Text>
-          </Button>
-        )}
-      </Flex>
-      <Flex $flexWrap="wrap" $justify="start" $width="100%" $gap={4}>
-        {Genres.map((genre, index) => {
-          return (
-            <Link
-              key={index}
-              to=""
-              $padding="7px 12px"
-              $backgroundColor="hsla(240, 4%, 49%, 0.07);"
-              $borderRadius="12px"
-            >
-              {genre}
-            </Link>
-          );
-        })}
-      </Flex>
-    </Flex>
-  );
+	useEffect(() => {
+		if (textRef.current) {
+			console.log(window.getComputedStyle(textRef.current).lineHeight);
+
+			const lineHeight = parseInt(
+				window.getComputedStyle(textRef.current).lineHeight,
+				10
+			);
+			const textHeight = textRef.current.clientHeight;
+			setShowFullText(textHeight > lineHeight * 4);
+		}
+	}, [textRef.current, props.content]);
+
+	return (
+		<div className={c.container}>
+			<div className={c.textContainer}>
+				<div ref={textRef} className={c.text} data-text-column={showFullText}>
+					{props?.content?.split("\n").map((line, index) => (
+						<Fragment key={index}>
+							{line}
+							<br />
+						</Fragment>
+					))}
+				</div>
+				{showFullText && (
+					<button
+						className={c.textMore}
+						onClick={() => {
+							setShowFullText(false);
+						}}
+					>
+						<ArrowDown />
+						Больше
+					</button>
+				)}
+			</div>
+			<div className={c.genresContainer}>
+				{Genres.map((genre, index) => {
+					return (
+						<Link key={index} to={`/catalog?${genre}`} className={c.genre}>
+							{genre}
+						</Link>
+					);
+				})}
+			</div>
+		</div>
+	);
 };
 
 export default MangaAbout;

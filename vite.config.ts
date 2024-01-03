@@ -14,6 +14,7 @@ export default defineConfig({
       lib: "/src/lib",
       icons: "/src/icons",
       utils: "/src/utils",
+      styles: "/src/styles",
     },
   },
 });

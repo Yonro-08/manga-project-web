@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
-import { Box } from "./Custom";
+import Login from "./Login";
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <Box as="main" $padding="5px 0" $marginTop={56}>
+      <main className="main">
         <Outlet />
-      </Box>
+      </main>
+      {/* <Login /> */}
     </>
   );
 };
