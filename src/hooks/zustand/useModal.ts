@@ -1,21 +1,34 @@
 import { create } from "zustand";
 
 interface useModalProps {
-	isOpen: boolean;
+	isLogin: boolean;
+	isRegister: boolean;
 	openModal: () => void;
 	closeModal: () => void;
+	authRedirect: () => void;
 }
 
 export const useModal = create<useModalProps>((set) => ({
-	isOpen: false,
+	isLogin: false,
+	isRegister: false,
 	openModal: () =>
 		set(() => {
 			document.body.classList.add("is-modal");
-			return { isOpen: true };
+			return { isLogin: true };
 		}),
 	closeModal: () =>
 		set(() => {
 			document.body.classList.remove("is-modal");
-			return { isOpen: false };
+			return { isLogin: false, isRegister: false };
+		}),
+	authRedirect: () =>
+		set((state) => {
+			if (state.isLogin) {
+				return { isLogin: false, isRegister: true };
+			}
+			if (state.isRegister) {
+				return { isLogin: true, isRegister: false };
+			}
+			return {};
 		}),
 }));

@@ -5,20 +5,14 @@ import c from "./Button.module.scss";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-function Button({
-	children,
-	onClick,
-	className,
-	type = "button",
-}: ButtonProps) {
+function Button({ children, className, ...props }: ButtonProps) {
 	return (
 		<button
-			type={type}
 			className={classNames(
 				{ [c.button]: true },
 				className ? { [className]: true } : {}
 			)}
-			onClick={onClick}
+			{...props}
 		>
 			{children}
 		</button>

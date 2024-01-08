@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { MangaListProps } from "types/manga";
+import { MangaListProps } from "types/Manga";
 import MangaItem from "../MangaItem";
 
 import "swiper/css";

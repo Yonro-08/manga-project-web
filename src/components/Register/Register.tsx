@@ -1,12 +1,14 @@
 import { MouseEvent } from "react";
 
 import AuthRedirect from "components/AuthRedirect";
-import LoginForm from "components/LoginForm";
+import RegisterForm from "components/RegisterForm";
 import { useModal } from "hooks/zustand/useModal";
 
-import c from "./Login.module.scss";
+import c from "./Register.module.scss";
 
-function Login() {
+interface Register {}
+
+function Register() {
 	const { closeModal } = useModal();
 
 	const stopPropagation = (e: MouseEvent<HTMLDivElement>) => {
@@ -14,19 +16,16 @@ function Login() {
 	};
 
 	return (
-		<div className={c.login} onClick={closeModal}>
+		<div className={c.register} onClick={closeModal}>
 			<div className={c.container}>
 				<div className={c.wrap} onClick={stopPropagation}>
-					<h2 className={c.title}>Войти в аккаунт</h2>
-					<LoginForm />
-					<AuthRedirect
-						title="Нет учетной записи??"
-						value="Зарегистрироваться"
-					/>
+					<h2 className={c.title}>Зарегистрировать аккаунт</h2>
+					<RegisterForm />
+					<AuthRedirect title="Уже есть аккаунт?" value="Войти" />
 				</div>
 			</div>
 		</div>
 	);
 }
 
-export default Login;
+export default Register;

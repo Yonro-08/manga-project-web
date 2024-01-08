@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { StarIcon } from "icons";
-import { MangaListProps } from "types/manga";
+import { MangaListProps } from "types/Manga";
 
 import c from "./MangaItem.module.scss";
 

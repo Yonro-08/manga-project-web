@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
+import BurgerMenu from "components/BurgerMenu";
+import DropDown from "components/DropDown";
+import ProfileImage from "components/ProfileImage";
 import SwitchTheme from "components/SwitchTheme";
+import { useAuth } from "hooks/zustand/useAuth";
 import { useModal } from "hooks/zustand/useModal";
 import { SettingIcon } from "icons";
 
@@ -8,6 +12,7 @@ import c from "./HeaderNavRight.module.scss";
 
 const HeaderNavRight = () => {
 	const { openModal } = useModal();
+	const { isAuth, user } = useAuth();
 
 	return (
 		<div className={c.container}>
@@ -18,13 +23,20 @@ const HeaderNavRight = () => {
 					</li>
 				</ul>
 			</nav>
-			<SwitchTheme />
+			{!isAuth && <SwitchTheme />}
 			<button className={c.button}>
 				<SettingIcon />
 			</button>
-			<button className={c.enterProfile} onClick={openModal}>
-				Войти
-			</button>
+			{isAuth && user ? (
+				<DropDown
+					value={<ProfileImage avatar={user.avatar} />}
+					burgerContent={<BurgerMenu user={user} />}
+				/>
+			) : (
+				<button className={c.enterProfile} onClick={openModal}>
+					Войти
+				</button>
+			)}
 		</div>
 	);
 };

@@ -24,8 +24,6 @@ const MangaAbout = (props: MangaAboutProps) => {
 
 	useEffect(() => {
 		if (textRef.current) {
-			console.log(window.getComputedStyle(textRef.current).lineHeight);
-
 			const lineHeight = parseInt(
 				window.getComputedStyle(textRef.current).lineHeight,
 				10

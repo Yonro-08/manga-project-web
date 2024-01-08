@@ -1,10 +1,19 @@
+import { useModal } from "hooks/zustand/useModal";
+
 import c from "./AuthRedirect.module.scss";
 
-function AuthRedirect() {
+interface AuthRedirectProps {
+	title: string;
+	value: string;
+}
+
+function AuthRedirect({ title, value }: AuthRedirectProps) {
+	const { authRedirect } = useModal();
+
 	return (
 		<div className={c.container}>
-			<span>Нет учетной записи??</span>
-			<span>Зарегистрироваться</span>
+			<span>{title}</span>
+			<span onClick={authRedirect}>{value}</span>
 		</div>
 	);
 }
