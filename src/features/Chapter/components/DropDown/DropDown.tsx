@@ -9,7 +9,6 @@ const DropDown = ({ options }: { options: ChapterProps[] }) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const chapterQuery = Number(searchParams.get("chapter"));
 	const [isActive, setIsActive] = useState<boolean>(false);
-	console.log(options);
 
 	const handleClick = () => {
 		setIsActive((prev) => !prev);

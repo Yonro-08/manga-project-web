@@ -15,7 +15,7 @@
 		transition: all 0.2s linear;
 		pointer-events: none;
 
-		&[data-isBurgerOnTop="false"] {
+		&[data-is-burger-on-top="false"] {
 			top: 100%;
 			transform: translateY(-10px);
 		}

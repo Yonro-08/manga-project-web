@@ -67,7 +67,7 @@ const DropDown = ({
 			<div
 				className={classNames({ [c.burger]: true }, { [classBurger]: true })}
 				ref={refBurger}
-				data-isBurgerOnTop={isBurgerOnTop}
+				data-is-burger-on-top={isBurgerOnTop}
 				data-active={isActive}
 				style={
 					isBurgerOnTop
